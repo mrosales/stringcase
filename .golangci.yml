@@ -1,0 +1,42 @@
+linters-settings:
+  errcheck:
+    check-blank: true
+
+  gocyclo:
+    min-complexity: 10
+
+  godox:
+    keywords:
+      - TODO
+      - BUG
+      - FIXME
+
+  goimports:
+    local-prefixes: github.com/mrosales/stringcase
+
+  golint:
+    min-confidence: 0
+
+  misspell:
+    locale: US
+    ignore-words: []
+
+linters:
+  disable-all: true
+  enable:
+    - errcheck
+    - gocyclo
+    - goimports
+    - golint
+    - gosimple
+    - govet
+    - misspell
+    - unused
+    - whitespace
+
+
+issues:
+  exclude-use-default: false
+
+  exclude:
+    - (should have a package comment)  # golint
