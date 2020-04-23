@@ -1,5 +1,8 @@
 # stringcase
 
+![](https://github.com/mrosales/stringcase/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/mrosales/stringcase/branch/master/graph/badge.svg)](https://codecov.io/gh/mrosales/stringcase)
+
 stringcase is a lightweight Go library that implements a few simple
 utilities for transforming strings. It has no dependencies outside of
 the Go standard library.
