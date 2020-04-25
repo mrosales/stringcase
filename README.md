@@ -1,37 +1,31 @@
 # stringcase
 
-![](https://github.com/mrosales/stringcase/workflows/Test/badge.svg)
-[![codecov](https://codecov.io/gh/mrosales/stringcase/branch/master/graph/badge.svg)](https://codecov.io/gh/mrosales/stringcase)
+[![Build][build-badge]][build]
+[![codecov][codecov-badge]][codecov]
+[![goreport][goreport-badge]][goreport]
+[![GoDoc][godoc-badge]][godoc]
+[![MIT License][license-badge]][license]
 
-stringcase is a lightweight Go library that implements a few simple
-utilities for transforming strings. It has no dependencies outside of
-the Go standard library.
+Easy string case conversion in Go
 
 ## Usage
 
-* `snake_case` and `UPPER_SNAKE_CASE`
 
-    ```go
-    stringcase.ToSnake("NotSnake") // -> "not_snake"
-    stringcase.ToUpperSnake("NotSnake") // -> "NOT_SNAKE"
-    ````
+```go
+s := "MIXED-caseString.test"
+```
 
-* `camelCase` and `UpperCamelCase` (aka `PascalCase`)
-
-    ```go
-    stringcase.ToCamel("not-Camel") // -> "notCamel"
-    stringcase.ToUpperCamel("not-Camel") // -> "NotCamel"
-    ```
-
-* `kebab` and `UPPER-KEBAB`
-
-    ```go
-    stringcase.ToKebab("NotKebab") // -> "not-kebab"
-    stringcase.ToUpperKebab("NotKebab") // -> "NOT-KEBAB"
-    ```
+| Converter           | Output                     |
+----------------------------------------------------
+| `ToSnake(s)`        | `mixed_case_string_test`   |
+| `ToUpperSnake(s)`   | `MIXED_CASE_STRING_TEST`   |
+| `ToCamel(s)`        | `mixedCaseStringTest`      |
+| `ToUpperCamel(s)`   | `MixedCaseStringTest`      |
+| `ToKebab(s)`        | `mixed-case-string-test`   |
+| `ToUpperKebab(s)`   | `MIXED-CASE-STRING-TEST`   |
 
 If you are curious about the rules for converting strings, take a look at
-[the test file](./stringcase_test.go) for examples.
+[the test file](stringcase_test.go) for examples.
 
 ## Install
 
@@ -80,3 +74,18 @@ The following cases trigger a word break:
     * The change that this `stringcase` library makes is to first split the string into
       words and then join them in canonical fashion for each type of casing. This is
       slightly less efficient, but I find it to produce more predictable results.
+
+---
+
+Released under the [MIT License](LICENSE.txt).
+
+[build]: https://github.com/mrosales/stringcase/actions?query=branch%3Amaster
+[build-badge]: https://img.shields.io/github/workflow/status/mrosales/stringcase/Test/master?style=flat-square
+[codecov]: https://codecov.io/gh/mrosales/stringcase
+[codecov-badge]: https://img.shields.io/codecov/c/gh/mrosales/stringcase?style=flat-square
+[goreport]: https://goreportcard.com/report/github.com/mrosales/stringcase
+[goreport-badge]: https://goreportcard.com/badge/github.com/mrosales/stringcase?style=flat-square
+[godoc]: https://pkg.go.dev/github.com/mrosales/stringcase
+[godoc-badge]: https://img.shields.io/badge/godoc-reference-blue?style=flat-square
+[license]: LICENSE.txt
+[license-badge]: https://img.shields.io/github/license/mrosales/stringcase?style=flat-square
