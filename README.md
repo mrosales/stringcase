@@ -16,7 +16,7 @@ s := "MIXED-caseString.test"
 ```
 
 | Converter           | Output                     |
-----------------------------------------------------
+|---------------------|----------------------------|
 | `ToSnake(s)`        | `mixed_case_string_test`   |
 | `ToUpperSnake(s)`   | `MIXED_CASE_STRING_TEST`   |
 | `ToCamel(s)`        | `mixedCaseStringTest`      |
