@@ -10,7 +10,6 @@ Easy string case conversion in Go
 
 ## Usage
 
-
 ```go
 s := "MIXED-caseString.test"
 ```
@@ -37,12 +36,13 @@ go get -u github.com/mrosales/stringcase
 
 ## Implementation Details
 
-#### Special Characters
+### Special Characters
 
-All converters will **remove any non-alphanumeric characters**. That means things like
-emojis, punctuation, whitespace and other unicode characters will all be removed.
+All converters will **remove any non-alphanumeric characters**. That means
+things like emojis, punctuation, whitespace and other unicode characters
+will all be removed.
 
-#### Word Breaks
+### Word Breaks
 
 Before transforming the string, it is first split into words. This
 implementation tries to do the **right thing**™, but it may very well
@@ -56,24 +56,27 @@ The following cases trigger a word break:
 * Any whitespace (`\s+`)
 * Transitioning from lowercase to uppercase
   This attempts to respect Go's preference to capitalize acronyms and abbreviations.
-    * `fooBar` -> `foo Bar`
-    * `fooBAR` -> `foo BAR`
-    * `userID` -> `user ID`
-    * `userIDFOO` -> `user IDFOO` (*nothing we can really do about a string like this*)
+
+  * `fooBar` -> `foo Bar`
+  * `fooBAR` -> `foo BAR`
+  * `userID` -> `user ID`
+  * `userIDFOO` -> `user IDFOO` (*nothing we can really do about a string like this*)
+
 * Transitioning from uppercase to lowercase
-    * `userIDBar` -> `user ID Bar`
+  * `userIDBar` -> `user ID Bar`
 
 ## Inspiration
 
 * [`github.com/iancoleman/strcase`](https://github.com/iancoleman/strcase)
-    * This is a great library that I used for some time before this, but I felt
-      like the camelcase implementation in particular seemed inconsistent.
-      For example, I would prefer `ToCamel("fooBAR")` to return `"fooBar"` rather than
-      `"fooBar"`. This is not necessarily wrong, but it does not match how
-      `ToSnake("fooBAR")` for that library returns `foo_bar`.
-    * The change that this `stringcase` library makes is to first split the string into
-      words and then join them in canonical fashion for each type of casing. This is
-      slightly less efficient, but I find it to produce more predictable results.
+  * This is a great library that I used for some time before this, but I felt
+    like the camelcase implementation in particular seemed inconsistent.
+    For example, I would prefer `ToCamel("fooBAR")` to return `"fooBar"` rather than
+    `"fooBar"`. This is not necessarily wrong, but it does not match how
+    `ToSnake("fooBAR")` for that library returns `foo_bar`.
+  * The change that this `stringcase` library makes is to first split the string
+    into words and then join them in canonical fashion for each type of casing.
+    This is slightly less efficient, but I find it to produce more predictable
+    results.
 
 ---
 

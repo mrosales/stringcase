@@ -4,10 +4,14 @@ repos:
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: git://github.com/dnephin/pre-commit-golang
+  - repo: https://github.com/dnephin/pre-commit-golang
     rev: v0.3.5
     hooks:
       - id: golangci-lint
         args:
           - "--fix"
       - id: go-unit-tests
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.9.0
+    hooks:
+      - id: markdownlint
